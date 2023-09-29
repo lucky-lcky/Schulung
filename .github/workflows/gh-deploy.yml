@@ -1,0 +1,15 @@
+00 name: gh-deploy 
+01 on:
+02   push:
+03     branches:
+04       - main
+05 jobs:
+06   deploy:
+07     runs-on: ubuntu-latest
+08     steps:
+09       - uses: actions/checkout@v2
+10       - uses: actions/setup-python@v2
+11         with:
+12           python-version: 3.x
+13       - run: pip install mkdocs-material 
+14       - run: mkdocs gh-deploy --force
